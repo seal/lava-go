@@ -11,8 +11,10 @@ Simple program that generates lavalamp-blobs in terminal
 ## Description
 
 Program inspired by https://github.com/AngelJumbo/lavat 
+
 CLI program with TUI that makes lavalamp blob like objects 
 
+![lavagofinal](https://user-images.githubusercontent.com/25641834/205149258-3bebe79a-1bfe-494f-9794-4511dd4557cd.gif)
 
 
 
