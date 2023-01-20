@@ -1,4 +1,4 @@
-module github.com/seal/lavalamp
+module github.com/seal/lava-go
 
 go 1.19
 
