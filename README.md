@@ -23,6 +23,11 @@ CLI program with TUI that makes lavalamp blob like objects
 go run main.go 
 ```
 
+Flags:
+-b [int] Number of balls
+-r [int] Radius of balls
+-s [int] Polling rate in microseconds, default 50000
+-c [0/1] If the balls are contained in a box
 Exit the program by pressing Esc and waiting up to 5 seconds 
 
 

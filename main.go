@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"math/rand"
 	"time"
 
@@ -14,11 +15,27 @@ type Ball struct {
 	dy int
 }
 
+func init() {
+	flag.IntVar(&nballs, "b", 10, "Number of balls")
+
+	flag.IntVar(&radius, "r", 10, "Radius of balls")
+
+	flag.IntVar(&pollingRate, "s", 50000, "Polling rate in microseconds")
+
+	flag.IntVar(&contained, "c", 0, "If 0, balls are contained in a box")
+
+	flag.Parse()
+
+}
+
+var RAND_MAX = 32767 // rand() in C provides a random number between 0 and something over 32767
+
+// Flag options below
 var (
-	nballs    = 10
-	contained = 0
-	radius    = 100
-	RAND_MAX  = 32767 // rand() in C provides a random number between 0 and something over 32767
+	contained   = 0
+	radius      = 10
+	nballs      = 10
+	pollingRate = 50000
 )
 
 func draw() {
@@ -80,24 +97,23 @@ func draw() {
 				if sum[0] > sumConst {
 					if sum[1] > sumConst {
 						// print i, j full block
-						termbox.SetCell(i, j, '█', termbox.ColorCyan, termbox.ColorCyan)
+						termbox.SetCell(i, j, ' ', termbox.ColorDefault, termbox.ColorCyan)
 					} else {
-						termbox.SetCell(i, j, '▀', termbox.ColorCyan, termbox.ColorCyan)
+						termbox.SetCell(i, j, ' ', termbox.ColorDefault, termbox.ColorCyan)
 					}
 				} else if sum[1] > sumConst {
-					termbox.SetCell(i, j, '▄', termbox.ColorCyan, termbox.ColorCyan)
+					termbox.SetCell(i, j, ' ', termbox.ColorDefault, termbox.ColorCyan)
 				}
 			}
 		}
-		time.Sleep(time.Duration(50000) * time.Microsecond)
+		time.Sleep(time.Duration(pollingRate) * time.Microsecond)
 		termbox.Flush()
 
 	}
 }
 
 func main() {
-	// Initialise termbox
-
+	// Initialise termboox
 	err := termbox.Init()
 	if err != nil {
 		panic(err)
@@ -119,7 +135,7 @@ loop:
 				break loop
 			}
 		default:
-			time.Sleep(5 * time.Second)
+			time.Sleep(1 * time.Second)
 		}
 
 	}
