@@ -23,7 +23,7 @@ CLI program with TUI that makes lavalamp blob like objects
 go run main.go 
 ```
 
-##Flags:
+## Flags:
 
 -b [int] Number of balls
 
